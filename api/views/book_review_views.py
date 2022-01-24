@@ -95,10 +95,13 @@ def edit_review(request, pk):
 
 @api_view()
 @user_login_required
-def get_all_reviews(request):
+def get_all_reviews(request, pk):
+    book_no = pk
     user_id = request.session['user_id']
+    books = Book.objects.filter(no=book_no, user_id=user_id)
+    if not books.exists():
+        return Response({'success': False, 'message': '沒有此評論'}, status=status.HTTP_404_NOT_FOUND)
 
-    books = Book.objects.filter(user_id=user_id)
     return Response({
         'success': True,
         'data': [
