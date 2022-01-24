@@ -27,9 +27,7 @@ SECRET_KEY = 'django-insecure-(bxma0%2x5#3o48lhgzvfo+^ssr8o#3nyc^q+t_4r(_$#%k*y_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    'postgres://bfqkniyucuvaol:eddbc0215d1dceda16bc4d468a0712f5b58b8d4789bae2a063af4843f6d1899a@ec2-3-222-49-168.compute-1.amazonaws.com:5432/dilcbp3j0j6ru']
-
+ALLOWED_HOSTS = ['djangobook-0124.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
