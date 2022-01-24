@@ -95,7 +95,34 @@ def edit_review(request, pk):
 
 @api_view()
 @user_login_required
-def get_all_reviews(request, pk):
+def get_all_reviews(request):
+    user_id = request.session['user_id']
+
+    books = Book.objects.filter(user_id=user_id)
+    return Response({
+        'success': True,
+        'data': [
+            {
+                'no': book.no,
+                'user_id': book.user.pk,
+                'name': book.name,
+                'title': book.title,
+                'comment': book.comment,
+                'book_tags': [
+                    {
+                        "tag_name": tag.name
+                    }
+                    for tag in BookTag.objects.filter(book_no=book.pk)
+                ]
+            }
+            for book in books
+        ]
+    })
+
+
+@api_view()
+@user_login_required
+def get_reviews(request, pk):
     book_no = pk
     user_id = request.session['user_id']
     books = Book.objects.filter(no=book_no, user_id=user_id)
