@@ -10,6 +10,7 @@ from api.serializers.book_review_serializers import *
 
 @api_view(['POST'])
 @user_login_required
+#可以依照自己想打啥就打啥
 def add_review(request):
     data = request.data
     serializer = BookReviewSerializer(data=data)
