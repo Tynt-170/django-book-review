@@ -10,7 +10,7 @@ from api.serializers.book_review_serializers import *
 
 @api_view(['POST'])
 @user_login_required
-#可以依照自己想打啥就打啥
+# 可以依照自己想打啥就打啥
 def add_review(request):
     data = request.data
     serializer = BookReviewSerializer(data=data)
@@ -32,16 +32,16 @@ def add_review(request):
     return Response({
         'success': True,
         'data':
-        {
-            'no': book.pk,
-            'user_id': book.user.name,
-            'name': book.name,
-            'title': book.title,
-            'comment': book.comment,
-            'book_tags': [
-                {
-                    'tag_name': tag.name
-                } for tag in tags if tags.exists()
-            ]
-        }
+            {
+                'no': book.pk,
+                'user_id': book.user.name,
+                'name': book.name,
+                'title': book.title,
+                'comment': book.comment,
+                'book_tags': [
+                    {
+                        'tag_name': tag.name
+                    } for tag in tags if tags.exists()
+                ]
+            }
     })
