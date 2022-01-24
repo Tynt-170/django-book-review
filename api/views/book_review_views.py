@@ -33,7 +33,7 @@ def add_review(request):
         'data':
         {
             'no': book.pk,
-            'user_id': book.user.pk,
+            'user_id': book.user.name,
             'name': book.name,
             'title': book.title,
             'comment': book.comment,
